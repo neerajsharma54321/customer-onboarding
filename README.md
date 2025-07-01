@@ -1,4 +1,4 @@
-# Customer On-boarding 
+# Customer Onboarding 
 
 A end user register the application and processing officer will notify or take the decision to approve/reject/pending the application
 
