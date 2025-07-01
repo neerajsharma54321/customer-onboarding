@@ -1,0 +1,22 @@
+<header class="app-header">
+  <div class="logo">Customer-Onboarding</div>
+
+  <nav class="nav-menu">
+    <a *ngFor="let menu of menuItems" [routerLink]="menu.path" routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      {{menu.label}}
+    </a>
+  </nav>
+
+  <button class="btn position-relative" title="View new applications" (click)="viewNewUser()">
+      <i class="bi bi-bell fs-4"></i>
+      <span *ngIf="auth.isLoggedIn()"
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        new App: {{ this.appNotificationData.length }}
+      </span>
+  </button>
+  <div class="user-menu">
+    <a *ngIf="!auth.isLoggedIn()" routerLink="/login">Login</a>
+    <a *ngIf="auth.isLoggedIn()" (click)="logout()" style="cursor: pointer;">Logout</a>
+  </div>
+</header>

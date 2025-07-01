@@ -1,0 +1,17 @@
+  <div class="app-submission">
+    <h2>Your application has been<br>successfully submitted.</h2>
+    <p>Your application is being processed and all communications<br>
+    on your application will be shared with you by the Customer<br>
+    Service Representative helping you in branch.</p>
+
+    <div class="info-box">
+      <span class="info-icon">ℹ️</span>
+      <div>
+        <div class="application-id">Application ID: {{applicationId}}</div>
+        <div>You can use your application ID at any point in time to<br>
+        check on or track the status of your application.</div>
+      </div>
+    </div>
+
+    <button class="done-btn" (click)="checkApplicationStatus()">Done</button>
+  </div>

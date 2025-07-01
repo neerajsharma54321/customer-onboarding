@@ -1,0 +1,44 @@
+ .app-submission {
+      max-width: 600px;
+      text-align: center;
+      border: 1px solid #ddd;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #000;
+      font-size: 22px;
+    }
+    p {
+      color: #444;
+      font-size: 14px;
+    }
+    .info-box {
+      background-color: #f7f7f7;
+      border-left: 5px solid #0078d4;
+      text-align: left;
+      margin: 20px 0;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: #333;
+    }
+    .info-icon {
+      color: #0078d4;
+      font-size: 18px;
+    }
+    .done-btn {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 10px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .application-id {
+      font-weight: bold;
+    }

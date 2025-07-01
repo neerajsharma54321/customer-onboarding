@@ -1,0 +1,137 @@
+<div class="login-bg d-flex justify-content-center align-items-center min-vh-100" style="width: 450px;">
+    <div class="card shadow p-4" style="width: 100%; max-width: 420px;">
+        <h4 class="mb-3 text-center" *ngIf="step !=3">Register Applicant</h4>
+        <p class="btn btn-sm btn-danger ms-2" *ngIf="showErrorMessage">{{apiError?.message}}</p>
+        <form [formGroup]="stepperForm">
+            <div *ngIf="step ==1">
+                <div class="mb-3">
+                    <label>Legal Name</label>
+                    <input formControlName="legalName" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Legal Structure</label>
+                    <select formControlName="legalStructure" class="form-select">
+                        <option *ngFor="let type of legalStructures" [value]="type">{{ type }}</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label>Country of Incorporation</label>
+                    <input formControlName="countryOfIncorporation" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Business Registration Number</label>
+                    <input formControlName="registrationNumber" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Tax Number</label>
+                    <input formControlName="taxId" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Industry Type</label>
+                    <select formControlName="industryType" class="form-select">
+                        <option *ngFor="let ind of industries" [value]="ind">{{ ind }}</option>
+                    </select>
+                </div>
+
+                <div class="mb-3" formArrayName="directors">
+                    <label>List of Directors</label>
+                    <div *ngFor="let director of directors.controls; let i = index" [formGroupName]="i"
+                        class="row g-2 mb-2">
+                        <div class="col"><input class="form-control" placeholder="Name" formControlName="name"
+                                [id]="'name'+i" /></div>
+                        <div class="col"><input class="form-control" placeholder="ID/Passport" formControlName="nationalId"
+                                [id]="'passport'+i" />
+                        </div>
+                        <div class="col"><input class="form-control" placeholder="Country" formControlName="countryOfResidence"
+                                [id]="'country'+i" />
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-danger btn-sm" (click)="removeDirector(i)" type="button"
+                                *ngIf="directors.length > 1">X</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-primary btn-sm" type="button" (click)="addDirector()">+ Add
+                        Director</button>
+                </div>
+            </div>
+            <div *ngIf="step == 2">
+
+                <div class="mb-3">
+                    <label>Primary Contact person</label>
+                    <input formControlName="contactPerson" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Contact Email</label>
+                    <input type="email" formControlName="contactEmail" class="form-control" />
+                    <div *ngIf="stepperForm.get('contactEmail')?.invalid && stepperForm.get('contactEmail')?.touched"
+                        class="text-danger">
+                        Enter a valid email.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label>Estimated Annual Turnover</label>
+                    <input formControlName="annualTurnover" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Expected Monthly Transaction Volume</label>
+                    <input formControlName="monthlyVolume" class="form-control" />
+                </div>
+
+                <div class="mb-3" formArrayName="ubos">
+                    <label>List of UBOs</label>
+                    <div *ngFor="let ubo of ubos?.controls; let i = index" [formGroupName]="i" class="row g-2 mb-2">
+                        <div class="col"><input class="form-control" placeholder="Name" formControlName="name"
+                                [id]="'uboname'+i" /></div>
+                        <div class="col"><input class="form-control" placeholder="Ownership %"
+                                formControlName="ownershipPercent" [id]="'uboownershipPercent'+i" /></div>
+                        <div class="col-auto">
+                            <button class="btn btn-danger btn-sm" (click)="removeUBO(i)" type="button"
+                                *ngIf="ubos.length > 1">X</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-primary btn-sm" type="button" (click)="addUBO()">+ Add UBO</button>
+                </div>
+            </div>
+
+            <div *ngIf="step ==3">
+
+                <div class="upload-container" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"
+                    (drop)="onDrop($event)" [class.dragging]="isDragging">
+                    <img src="https://img.icons8.com/ios-filled/50/upload.png" alt="upload icon">
+                    <h3>Upload Supporting Documents</h3>
+                    <p>You can take a picture or upload your document</p>
+
+                    <div class="divider">OR</div>
+
+                    <button class="cobtn btn-r" (click)="fileInput.click()">Upload</button>
+                    <input type="file" hidden #fileInput (change)="onFileSelected($event)"
+                        accept=".jpg,.jpeg,.png,.pdf" />
+                    <div class="info">Max Size 10MB, Allowed Files .jpg, .jpeg, .png, .pdf</div>
+
+                    <div *ngIf="selectedFile" class="mt-2">
+                        <strong>{{ selectedFile.name }}</strong>
+                        <button type="button" class="btn btn-sm btn-danger ms-2" (click)="clearFile()">Remove</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-secondary" (click)="prevStep()"
+                    [disabled]="step === 1">Back</button>
+                <button type="button" class="btn btn-secondary" (click)="nextStep()" *ngIf="step < 3">Next</button>
+                <button type="submit" class="btn btn-success" (click)="onSubmit()" [disabled]="stepperForm.invalid"
+                    *ngIf="step === 3">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

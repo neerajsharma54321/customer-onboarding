@@ -1,0 +1,31 @@
+ 
+ .cancel-btn {
+      background-color: white;
+      border: 1px solid #ccc;
+      color: black;
+    }
+
+    .next-btn {
+      background-color: #222;
+      color: white;
+    }/* You can add global styles to this file, and also import other style files */
+
+     .cobtn {
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .btn-r {
+        background-color: #d1003f !important;
+        color: white !important;
+    }
+
+    .btn-r-light {
+        background-color: #dd7595 !important;
+        color: white !important;
+    }

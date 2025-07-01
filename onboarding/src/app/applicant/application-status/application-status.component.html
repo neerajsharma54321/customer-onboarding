@@ -1,0 +1,11 @@
+<div class="app-status">
+    <h2>Check Application Status</h2>
+    <form  [formGroup]="appStatusForm" id="statusForm">
+      <label for="appId">Enter Application ID</label>
+      <input  formControlName="appId" class="form-control" type="text" placeholder="e.g. APP12345678"/>
+      <button type="submit" (click)="checkStatus()" [disabled]="appStatusForm.invalid">Check Status</button>
+      <!-- <button class="status-result" type="submit" (click)="onSubmit()" [disabled]="appStatusForm.invalid">Check Status</button> -->
+    </form>
+
+     <div style="margin-top: 30px;" *ngIf="showMessage" [class]="messageClass" [innerHTML]="appStatus">></div>
+  </div>

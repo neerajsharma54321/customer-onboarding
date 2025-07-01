@@ -1,0 +1,55 @@
+<div class="container mt-4">
+  <h4>Application List</h4>
+  <ul class="d-flex list-unstyled gap-3">
+    <li *ngFor="let typeOfApp of typeOfApplicationsChoice; let i = index">
+      <button (click)="getApplications(typeOfApp.key)"
+        [ngClass]="typeOfApp.key ==  selectedAppChoice ? 'cobtn btn-r' : 'cobtn btn-r-light'">{{typeOfApp.label}}</button>
+    </li>
+  </ul>
+
+  <ng-container *ngIf="applications?.length;else dataNotFound;">
+    <div *ngIf="isLoading; else contentTemplate">
+      Loading...
+    </div>
+    <ng-template #contentTemplate>
+      <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Id</th>
+            <th>Legan Name</th>
+            <th>Legal Structure</th>
+            <th>Country</th>
+            <th>Registration Number</th>
+            <th>Industry Type</th>
+            <th>Status</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="applications">
+          <tr *ngFor="let application of applications; let i = index">
+            <td>{{ application.applicationId }}</td>
+            <td>{{ application.legalName }}</td>
+            <td>{{ application.legalStructure }}</td>
+            <td>{{ application.countryOfIncorporation }}</td>
+            <td>{{ application.registrationNumber }}</td>
+            <td>{{ application.industryType }}</td>
+            <td>
+              <span [ngClass]="application.status == 'APPROVED' ? 'text-success' : 'text-danger'">
+                {{ application.status}}
+              </span>
+            </td>
+            <td>
+              <img src="assets/icons/detail.svg" width="24" height="24" alt="Search Icon" style="cursor: pointer;"
+                [title]="'user-'+application.applicationId" (click)="showDetail(application.applicationId)">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </ng-container>
+  <ng-template #dataNotFound>
+    <h3>Data not found</h3>
+  </ng-template>
+
+
+</div>
