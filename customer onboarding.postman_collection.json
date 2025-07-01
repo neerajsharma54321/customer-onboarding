@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "d678d192-f91e-40c6-b363-35b37b0443f6",
+		"name": "customer onboarding",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28356421"
+	},
+	"item": [
+		{
+			"name": "save application",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "payload",
+							"value": "{\"legalName\":\"Acme Corporation\",\"legalStructure\":\"Limited\",\"countryOfIncorporation\":\"USA\",\"registrationNumber\":\"REG123456\",\"taxId\":\"TAX123456\",\"industryType\":\"Finance\",\"directors\":[{\"name\":\"Alice Johnson\",\"nationalId\":\"NID123\",\"countryOfResidence\":\"USA\"}],\"contactPerson\":\"John Doe\",\"contactEmail\":\"john.doe@example.com\",\"annualTurnover\":\"5M\",\"monthlyVolume\":\"500K\",\"ubos\":[{\"name\":\"Bob Smith\",\"ownership\":50,\"countryOfResidence\":\"USA\"}]}",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "documents",
+							"type": "file",
+							"src": "/C:/Users/neerajsharma03/OneDrive - Nagarro/Desktop/icon/detail.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8093/api/onboarding/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8093",
+					"path": [
+						"api",
+						"onboarding",
+						"register"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:8080/upload \\\r\n  -H \"Content-Type: multipart/form-data\" \\\r\n  -F 'data={\"name\":\"John\",\"email\":\"john@example.com\"};type=application/json' \\\r\n  -F 'file=@/path/to/file.pdf'"
+			},
+			"response": []
+		},
+		{
+			"name": "find application by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8093/api/onboarding/ONBOARD1751270360279",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8093",
+					"path": [
+						"api",
+						"onboarding",
+						"ONBOARD1751270360279"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:8080/upload \\\r\n  -H \"Content-Type: multipart/form-data\" \\\r\n  -F 'data={\"name\":\"John\",\"email\":\"john@example.com\"};type=application/json' \\\r\n  -F 'file=@/path/to/file.pdf'"
+			},
+			"response": []
+		},
+		{
+			"name": "find application status by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8093/api/onboarding/status/ONBOARD1751270360279",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8093",
+					"path": [
+						"api",
+						"onboarding",
+						"status",
+						"ONBOARD1751270360279"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:8080/upload \\\r\n  -H \"Content-Type: multipart/form-data\" \\\r\n  -F 'data={\"name\":\"John\",\"email\":\"john@example.com\"};type=application/json' \\\r\n  -F 'file=@/path/to/file.pdf'"
+			},
+			"response": []
+		},
+		{
+			"name": "find applications",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8093/api/onboarding/status/ONBOARD1751270360279",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8093",
+					"path": [
+						"api",
+						"onboarding",
+						"status",
+						"ONBOARD1751270360279"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:8080/upload \\\r\n  -H \"Content-Type: multipart/form-data\" \\\r\n  -F 'data={\"name\":\"John\",\"email\":\"john@example.com\"};type=application/json' \\\r\n  -F 'file=@/path/to/file.pdf'"
+			},
+			"response": []
+		},
+		{
+			"name": "change application status",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"REJECTED\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8093/api/onboarding/status/ONBOARD1751281829541",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8093",
+					"path": [
+						"api",
+						"onboarding",
+						"status",
+						"ONBOARD1751281829541"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:8080/upload \\\r\n  -H \"Content-Type: multipart/form-data\" \\\r\n  -F 'data={\"name\":\"John\",\"email\":\"john@example.com\"};type=application/json' \\\r\n  -F 'file=@/path/to/file.pdf'"
+			},
+			"response": []
+		}
+	]
+}
